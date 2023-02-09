@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import './AddForm.css'
+
+import "./AddForm.css";
 const AddForm = (props) => {
   const [transaction, setTransaction] = useState("");
   const [title, setTitle] = useState("");
@@ -37,13 +38,13 @@ const AddForm = (props) => {
   return (
     <>
       <form onSubmit={submitForm} className="main-form">
-        <div class="form-group row p-4">
+        <div className="form-group row p-4">
           <label htmlFor="title" className="col-sm-2 col-form-label">
-           <h4>Title</h4> 
+            <h4>Title</h4>
           </label>
           <div className="col-sm-10">
             <input
-            className="h-75 "
+              className="h-75 "
               type="text"
               id="title"
               name="title"
@@ -55,11 +56,11 @@ const AddForm = (props) => {
         </div>
         <div className="form-group row p-4">
           <label htmlFor="title" className="col-sm-2 col-form-label">
-          <h4>Amount</h4> 
+            <h4>Amount</h4>
           </label>
           <div className="col-sm-10">
             <input
-            className="h-75"
+              className="h-75"
               type="number"
               id="number"
               name="amount"
@@ -71,11 +72,10 @@ const AddForm = (props) => {
         </div>
 
         <fieldset className="form-group p-3">
-        <legend className="col-form-label col-sm-10">
-            <h4>Transaction Type ?</h4> 
-            </legend>
+          <legend className="col-form-label col-sm-10">
+            <h4>Transaction Type ?</h4>
+          </legend>
           <div className="row">
-            
             <div className="col-sm-10 ">
               <div className="form-check ">
                 <input
@@ -88,7 +88,7 @@ const AddForm = (props) => {
                   onChange={onOptionChange}
                 />
                 <label className="form-check-label" htmlFor="Income">
-                <h6>Income</h6> 
+                  <h6>Income</h6>
                 </label>
               </div>
               <div className="form-check">
@@ -102,7 +102,7 @@ const AddForm = (props) => {
                   onChange={onOptionChange}
                 />
                 <label className="form-check-label" htmlFor="Expense">
-                <h6>Expense</h6> 
+                  <h6>Expense</h6>
                 </label>
               </div>
             </div>
@@ -111,7 +111,7 @@ const AddForm = (props) => {
 
         <div className="form-group row">
           <div className="col-sm-10">
-            <button type="submit" class="btn btn-primary h-100 w-100">
+            <button type="submit" className="btn btn-primary h-100 w-100">
               Add Transaction
             </button>
           </div>

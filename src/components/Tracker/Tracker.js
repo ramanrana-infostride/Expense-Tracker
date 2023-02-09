@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import AddForm from "../AddForm/AddForm";
 import "./Tracker.css";
 
-import Transactions from "../Transactions/Transactions";
-
 const Tracker = () => {
   const [balance, setBalance] = useState([]);
 
@@ -48,34 +46,55 @@ const Tracker = () => {
       <AddForm onAdd={addTransaction} />
 
       <div className="transaction-container">
-        {transactions.map((transactionItem, index) => {
-          return (
-            <Transactions
-              key={index}
-              id={index}
-              title={transactionItem.title}
-              amount={transactionItem.amount}
-              transaction={transactionItem.transaction}
-              onDelete={deleteTransaction}
-            />
-          );
-        })}
+        <table className="table table-bordered">
+          <thead className="bg-dark text-white">
+            <tr>
+              <td>ID</td>
+              <td>Title</td>
+              <td>Amount</td>
+              <td>Transaction</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions &&
+              transactions.map((item, index) => (
+                <tr key={index}>
+                  <td>{index}</td>
+                  <td>{item.title}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.transaction}</td>
+                  {console.log(item.transaction)}
+                  <td>
+                    <a href="/#"
+                      onClick={() => {
+                        deleteTransaction(index);
+                      }}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <div className="total-balance">
+        <div className="card">
+          <div className="card-header"><h2>Total Balance</h2></div>
+          <div className="card-body">
+            <h5 className="card-title"> {balance}</h5>
+            <btn onClick={calculateBalance} class="btn btn-primary">
+              Check Balance
+            </btn>
+          </div>  
+        </div>
+      </div>
       </div>
 
-      <button
-        className="btn btn-primary  balance-btn"
-        onClick={calculateBalance}
-      >
-        {" "}
-        Check Balance
-      </button>
-      <h2 className="balance-display">{balance}</h2>
+      
     </div>
   );
 };
 
 export default Tracker;
-
-/// add Edit functonality
-
-//add delete via other method
